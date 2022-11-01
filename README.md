@@ -28,7 +28,7 @@ Package Manager (In Project) 에서 Post Processing 패키지를 업데이트 (�
     
 * 강의
 
-    <img src="Docs/강의중사진.png" style="width:420px"></img>
+    <img src="Docs/강의중사진.jpg" style="width:420px"></img>
     
 ## Contribution
 
