@@ -3,8 +3,6 @@
 
 ## Project Description
 
-Learning Unity
-
 유니티 게임엔진을 활용한 메타버스 구현
 
 ### Platform
