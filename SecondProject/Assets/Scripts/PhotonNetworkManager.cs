@@ -75,7 +75,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
         // 나중에 SetActive를 false로 바꿔주려고
         visibleFalseCamera = GameObject.Find("Main Camera");
-        if (visibleFalseCamera == null) { Debug.Log("[1] 메인카메라를 찾지 못함 .."); }
+        if (visibleFalseCamera == null) { Debug.Log("[1:Warning] Can't find main camera in the scene .."); }
     }
 
     // Update is called once per frame
@@ -113,10 +113,10 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         serverWindow.SetActive(true);
-        connectionText.text = "(" + SceneManager.GetActiveScene().name + ") " + PhotonNetwork.NetworkClientState.ToString();
-
-        // ***
-        //JoinRoom();
+        
+        string str = "(" + SceneManager.GetActiveScene().name + ") " + PhotonNetwork.NetworkClientState.ToString();
+        connectionText.text = str;
+        Debug.Log(str);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> rooms)
@@ -133,6 +133,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     {
         serverWindow.SetActive(false);
         chatWindow.SetActive(true);
+
         connectionText.text = "Joining room ... " + PhotonNetwork.NetworkClientState.ToString();
 
         PhotonNetwork.LocalPlayer.NickName = username.text;
@@ -160,7 +161,9 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     // 실패하면
     public override void OnJoinedRoom()
     {
-        connectionText.text = "(" + PhotonNetwork.CurrentRoom.Name + ") " + PhotonNetwork.NetworkClientState.ToString();
+        string str = "[4:Success] (" + PhotonNetwork.CurrentRoom.Name + ") " + PhotonNetwork.NetworkClientState.ToString();
+        connectionText.text = str;
+        Debug.Log(str);
 
         Respawn(0.0f);
     }
@@ -169,7 +172,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinRandomFailed(returnCode, message);
         serverWindow.SetActive(true);
-        connectionText.text = "[OnJoinRandomFailed] Joined Room failed .. " + PhotonNetwork.NetworkClientState.ToString();
+        connectionText.text = "[4:OnJoinRandomFailed] Joined Room failed .. " + PhotonNetwork.NetworkClientState.ToString();
     }
 
     // ************************************************
@@ -190,13 +193,15 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         player = PhotonNetwork.Instantiate(playerModel.name, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation, 0);
         if (player != null) {
             visibleFalseCamera.SetActive(false);
+            Debug.Log("[5:Success] Player character is instantiated successfully ..");
         } else {
-            Debug.Log("[4] Player character is NOT instantiated ...");
+            Debug.Log("[5:Fail] Player character is NOT instantiated ....");
         }
 
         string strState = PhotonNetwork.NetworkClientState.ToString();
         string str = "[" + PhotonNetwork.LocalPlayer.NickName + "] is " + strState;
         connectionText.text = str;
+        Debug.Log(str);
 
         if (spawnTime == 0)
         {
