@@ -20,6 +20,7 @@ Package Manager (In Project) 에서 Post Processing 패키지를 업데이트 (�
 
 * 실행화면
 
+    <img src="Docs/실행화면1.png" style="width:420px"></img>
     <img src="Docs/PhotonView.png" style="width:420px"></img>
 
 * 맵
