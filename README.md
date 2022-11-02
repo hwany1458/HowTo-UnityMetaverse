@@ -1,9 +1,9 @@
 # Unity-HowToUse-BasicTutorials
-유니티 학습
+유니티 기초 학습, 포톤(Photon) 연결하여 멀티사용자 접속
 
 ## Project Description
 
-Learning Unity
+유니티 게임엔진을 활용한 메타버스 구현
 
 ### Platform
   Desktop (Windows OS)
